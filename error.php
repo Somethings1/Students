@@ -52,7 +52,8 @@
         <div class="container">
             <div class="noti">
                 <h1>Oh, snap! :((</h1>
-                <h2>Sorry. You do not have access to use this feature.</h2>
+                <h2>Sorry. An unknown error occurred while connecting to server. Please try again later.</h2>
+                <p><?php echo isset($_GET['messerror']) ? "More info: " . $_GET['messerror'] : "" ?></p>
                 <a class="button" onClick="window.history.back()">Back</a>
             </div>
         </div>

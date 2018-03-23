@@ -1,14 +1,68 @@
 <html>
     <head>
         <meta charset="utf-8">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <style>
+            * {
+                padding: 0;
+                margin: 0;
+                font-family: 'Segoe UI', Verdana, Roboto, Courier;
+            }
+            body {
+                display: flex;
+                justify-content: center;
+            }
+            .container {
+                width: 90%;
+            }
+            th {
+                text-align: center;
+            }
+            .table {
+                margin-top: 30px;
+            }
+        </style>
     </head>
     <body>
+        <div class="container">
         <?php
-            $access = isset($_COOKIE['login']);
-            if(!$access || ($access != "g" && $access != "a" && access != "e")) {
+            $access = isset($_COOKIE['access']);
+            $login = isset($_COOKIE['login']);
+            if (!$login) 
                 header("Location:" . "http://localhost:81/Students/login.php");
-                die();
+            else {
+                if($access != "g" && $access != "a" && access != "e") {
+                    header("Location:error.php");
+                    die();
+                }
+                else {
+                    $conn = new mysqli("localhost", "root", "", "students");
+                    if ($conn->connect_error) {
+                        header("Location:error.php?messerror=" . $conn->connect_error);
+                        die();
+                    }
+                    else {
+                        $conn->query("set character_set_results='utf8'");  
+                        $sql = "select * from students";
+                        $result = $conn->query($sql);
+                        echo "<table class='table'><tr><th colspan='5'><h2>Member list</h2></th></tr><tr><td>Id</td><td>Name</td><td>Class</td><td>Information</td><td>Note</td></tr><tr><td>";
+                        while ($row = $result->fetch_assoc()) {
+                            echo $row['id'] .
+                                "</td><td>" . 
+                                $row['name'] . 
+                                "</td><td>" . 
+                                $row['class'] . 
+                                "</td><td>" . 
+                                $row['info'] . 
+                                "</td><td>" . 
+                                $row['note'] . 
+                                "</td></tr>";
+                        }
+                        echo "</table>";
+                    }                    
+                }
             }
         ?>       
+        </div>
     </body>
 </html>
