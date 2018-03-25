@@ -1,6 +1,7 @@
 <html>
     <head>
         <title>Login to your account</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <style>
             * {
                 margin: 0;
@@ -22,6 +23,7 @@
                 z-index: 1;
                 background: rgb(10, 4, 39);
                 width: 400px;
+                height: 70%;
                 padding: 30px 45px 45px 45px;
                 text-align: center;
                 /*box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);*/
@@ -62,6 +64,12 @@
             .mess {
                 position: fixed;
                 color: white;
+                top: 500px;
+                z-index: 999;
+            }
+            a {
+                color: orange;
+                text-decoration: none;
             }
         </style>
     </head>
@@ -73,13 +81,16 @@
                     <input type="text" placeholder="Username" name="username" style="margin-top: 25px;"/>
                     <input type="password" placeholder="Password" name="password"/>
                     <button type="submit">login</button>
-                    <p style="color: white;margin-top:25px;">Not registered? <a href="#" style="color:orange;text-decoration:none">Create an account</a></p>
+                    <p style="color: white;margin-top:25px;">Not registered? <a>Create an account</a></p>
                 </form>
             </div>
             <?php
                 $name = isset($_POST["username"]) ? $_POST["username"] : null;
                 $password = isset($_POST["password"]) ? $_POST["password"] : null;
                 $filled = isset($_GET["filled"]) ? $_GET["filled"] : null;
+                if (isset($_COOKIE['login']) && isset($_COOKIE['access'])) {
+                    header("Location:index.php");
+                }
                 if ($filled != null) {
                     if ($name == null || $password == null) {
                         if ($password == null) 
@@ -93,21 +104,23 @@
                             header("Location:error.php?messerror=" . $conn->connect_error);
                             die();
                         }
+                        $conn->query("set character_set_results='utf8'"); 
                         $sql = "select * from users where username='" . $name . "'";
                         $result = $conn->query($sql);
                         if ($result->num_rows == 1) {
                             $row = $result->fetch_assoc();
                             if ($row['pass'] === $password) {
                                 setcookie("login", $row["id"], time() + (86400 * 30), "/");
-                                setcookie("access", $row["access"], time() + (86400 * 30), "/"); 
+                                setcookie("access", $row["access"], time() + (86400 * 30), "/");
+                                setcookie("name", $row['nickname']); 
                                 header("Location:index.php");   
                             }
                             else {
-                                echo "<p class='mess'>Password is not correct. <a>Forgot password?</a></p>";
+                                echo "<p class='mess'>Password is not correct. <a href='forgotPass.php'>Forgot password?</a></p>";
                             }
                         }
                         else {
-                            echo "<p class='mess'>Your username does not fit any.</p>";
+                            echo "<p class='mess'>The username you entered does not fit any.</p>";
                         }
                     }
                 }

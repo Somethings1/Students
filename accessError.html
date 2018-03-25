@@ -1,6 +1,7 @@
 <html>
     <head>
         <title>Error</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <style>
             * {
                 margin: 0;
@@ -23,10 +24,10 @@
                 line-height: 2;
             }
             h1 {
-                font-size: 3.5rem;
+                font-size: 4vw;
             }
             h2 {
-                font-size: 2rem;
+                font-size: 2.5vw;
             }
             .button {
                 display: inline-block;
@@ -37,14 +38,27 @@
                 color: lightgray;
                 text-decoration: none;
                 cursor: pointer;
-                transition: 0.2s ease;
+                font-size: 1.5vw;
+                transition: 0.3s ease;
             }
             .button:hover {
                 border-color: rgb(10, 4, 39);
+                color: white;
             }
             ::selection {
                 background-color: white;
                 color: black;
+            }
+            @media screen and (max-width: 1000px) {
+                h1 {
+                    font-size: 6vw;
+                }
+                h2 {
+                    font-size: 4.5vw;
+                }
+                a.button {
+                    font-size: 2.5vw;
+                }
             }
         </style>
     </head>

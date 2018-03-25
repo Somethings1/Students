@@ -1,0 +1,35 @@
+--Code sql, quăng vào phpmyadmin rồi "Go" là được.
+
+create database Students;
+use Students;
+create table Student(
+    id int auto increment,
+    name varchar(1),
+    class varchar(5),
+    info varchar(100),
+    note varchar(1)    
+);
+create table Users(
+    id varchar(1),
+    nickname varchar(1),
+    realname varchar(1),
+    username varchar(100),
+    pass varchar(100),
+    access varchar(1)
+);
+
+--Chuyển encode method sang utf8 để chứa được tiếng Việt
+alter database Students convert to character set utf8;
+alter table Users convert to character set utf8;
+alter table Sudents convert to character set utf8;
+
+--MySQL ko set nvarchar ngay từ đầu được nên phải set varchar rồi chuyển qua nvarchar
+alter table Users modify nickname nvarchar(100);
+alter table Users modify realname nvarchar(100);
+alter table Students modify name nvarchar(100);
+alter table Students modify note nvarchar(100);
+
+
+--Từ phần này là check, thêm vào hoặc tự thêm
+insert into Users values("Admin", "Admin", "admin", "a", "e");
+insert into Student values("Admin", "8a2", "https://facebook.com/users27052004", "None");

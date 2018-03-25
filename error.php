@@ -23,24 +23,29 @@
                 line-height: 2;
             }
             h1 {
-                font-size: 3.5rem;
+                font-size: 5vw;
             }
             h2 {
-                font-size: 2rem;
+                font-size: 2.5vw;
+            }
+            p {
+                font-size: 1.5vw;
             }
             .button {
                 display: inline-block;
                 box-sizing: border-box;
                 border: 1px solid white;
-                padding: 0 10px;
+                padding: 0 2%;
                 border-radius: 5px;
                 color: lightgray;
                 text-decoration: none;
                 cursor: pointer;
-                transition: 0.2s ease;
+                transition: 0.3s ease;
+                font-size: 1.5vw;
             }
             .button:hover {
                 border-color: rgb(10, 4, 39);
+                color: white;
             }
             ::selection {
                 background-color: white;
