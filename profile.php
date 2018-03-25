@@ -2,6 +2,7 @@
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta charset="utf-8">
+        <title>Profile</title>
         <style>
             * {
                 margin: 0;
@@ -117,13 +118,22 @@
             .home:hover {
                 color: white;
             }
+            .login a {
+                color: orange;
+                text-decoration: none;
+            }
+            .login a:hover {
+                text-decoration: underline;
+            }
         </style>
     </head>
     <body>
         <div class="container">
             <?php
-                if (!$_COOKIE['login']) echo "<h1>You need to login to use this feature. <a href='login.php'>Login</a></h1>";
-                else if ($_COOKIE['login'] != $_GET['id']);
+                if (!isset($_COOKIE['login'])) echo "<h1 class='login'>You need to login to use this feature. <a href='login.php'>Login</a></h1>";
+                else if ($_COOKIE['login'] != $_GET['id']) {
+                    echo "<script>window.location = 'accessError.html';</script>";
+                }
                 else {
                     echo "<img src='guest.png'/>";
                     
@@ -137,7 +147,6 @@
                     $result = $conn->query("select * from Users where id=" . $_GET['id']);
                     $row = $result->fetch_assoc();
                     $access = $row['access'] == "g" ? "Guest" : $row['access'] == "a" ? "Admin" : "Extra Admin";
-
                     //Print info
                     echo "<p class='access'>" . $access . "</p>";
                     echo "<p class='nickname'>" . $row['nickname'] . "</p>";
