@@ -4,7 +4,7 @@ How to use? Follow these step:
  1. Download and install XAMPP, download and extract this project from github 
  2. Copy (or cut) the project folder into C:\xampp\htdocs (or in the drive that you installed XAMPP in)
  3. Open XAMPP Control panel, start the Apache server and MySQL
- 4. Go to your web broswer (IE 9.0 or above is highly recommended, Chrome or Firefox any version). 
+ 4. Go to your web broswer (Chrome or Firefox any version, IE 9.0 or above is highly recommended). 
  5. Type in url bar: http://localhost/phpmyadmin. Press tab SQL
  6. Copy from "sql.txt" to the text feild in phpmyadmin>SQL tab. After that, press "GO" button
  7. Type in the url bar: http://localhost/Students
@@ -20,5 +20,9 @@ How to use? Follow these step:
  8. That's it!
 *To login:
  If you use all the code in sql.txt, just login with username = "admin", password = "a". You'll have the access as "Exatra admin" (that can use every feature now and in future)
-Rate me 5 stars, pls :)))
 
+
+*Update 1.1:
+ - Added register feature 
+*Incoming update 2.0:
+ - Adding features for accounts that have access as administrator (including adding, deleting, modifying member list)
