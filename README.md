@@ -28,5 +28,8 @@ How to use? Follow these step:
 *Update 1.1:
  - Added register feature 
 
-*Incoming update 2.0:
- - Adding features for accounts that have access as administrator (including adding, deleting, modifying member list)
+*2.0 alpha:
+ - Added admin page UI 
+
+ *Incoming 2.0 beta:
+ - Administrators can really have their own feature.
