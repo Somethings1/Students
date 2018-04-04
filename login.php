@@ -6,7 +6,7 @@
             * {
                 margin: 0;
                 padding: 0;
-                font-family: 'Segoe UI', Verdana, Roboto, Courier;
+                font-family: 'Segoe UI', Verdana, Courier;
                 font-weight: lighter;
                 color: white;
             }
@@ -14,19 +14,20 @@
                 display: flex;
                 justify-content: center;
                 align-items: center;
-                background-color: rgb(10, 4, 39);
+                background: #005C97;
+                background: -webkit-linear-gradient(to right, #363795, #005C97); 
+                background: linear-gradient(to right, #363795, #005C97);                
                 width: 100%;
                 height: 100%;
             }
             .form {
                 position: relative;
                 z-index: 1;
-                background: rgb(10, 4, 39);
+                background: transparent;
                 width: 400px;
                 height: 70%;
                 padding: 30px 45px 45px 45px;
                 text-align: center;
-                /*box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);*/
             }
             .form input {
                 font-family: "Roboto", sans-serif;
@@ -34,6 +35,7 @@
                 background: rgba(255, 255, 255, 0.1);
                 width: 100%;
                 border: 0;
+                border-radius: 5px;
                 margin: 15px 0;
                 padding: 15px;
                 box-sizing: border-box;
@@ -47,6 +49,7 @@
                 background: #4CAF50;
                 width: 100%;
                 border: 0;
+                border-radius: 5px;
                 margin-top: 25px;
                 padding: 15px;
                 color: #FFFFFF;
@@ -71,6 +74,9 @@
                 color: orange;
                 text-decoration: none;
             }
+            a:hover {
+                text-decoration: underline;
+            }
         </style>
     </head>
     <body>
@@ -81,7 +87,7 @@
                     <input type="text" placeholder="Username" name="username" style="margin-top: 25px;"/>
                     <input type="password" placeholder="Password" name="password"/>
                     <button type="submit">login</button>
-                    <p style="color: white;margin-top:25px;">Not registered? <a>Create an account</a></p>
+                    <p style="color: white;margin-top:25px;">Not registered? <a href="register.php">Create an account</a></p>
                 </form>
             </div>
             <?php
