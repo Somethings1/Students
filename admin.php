@@ -100,7 +100,7 @@
                     width: 100%!important;
                 }
                 h1 {
-                    font-size: 2rem;
+                    font-size: 2.2rem;
                 }
                 label {
                     margin-bottom: 10px;
@@ -111,7 +111,8 @@
                     margin: 10px 0;
                 }
                 .btn {
-                    margin: auto 20px;
+                    margin: 10px 20px;
+                    width: 75px;
                 }
             }
         </style>
