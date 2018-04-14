@@ -1,8 +1,8 @@
-#Students manage app by php.
+# Students manage app by php.
 
-###Features: Login, logout, see list of members,...(incoming in future: modify list with admin account)
+### Features: Login, logout, see list of members,...(incoming in future: modify list with admin account)
 
-##How to use:
+## How to use:
  1. Download and install XAMPP, download and extract this project from github 
  2. Copy (or cut) the project folder into C:\xampp\htdocs (or in the drive that you installed XAMPP in)
  3. Open XAMPP Control panel, start the Apache server and MySQL
