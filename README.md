@@ -1,6 +1,6 @@
 # Students manage app by php.
 
-### Features: Login, logout, see list of members,...(incoming in future: modify list with admin account)
+### Features: Login, logout, see list of members, etc.
 
 ## How to use:
  1. Download and install XAMPP, download and extract this project from github 
@@ -21,7 +21,7 @@
  6. Save the file
  7. In your web browser, instead of "http://localhost", use "http://localhost:81", or "http://127.0.0.1:81"
  8. That's it!
- 
+
 **To login:**
  If you use all the code in sql.txt, just login with username = "admin", password = "a". You'll have the access as "Exatra admin" (that can use every feature now and in future)
 
