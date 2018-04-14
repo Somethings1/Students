@@ -12,7 +12,7 @@
  7. Type in the url bar: http://localhost/Students
  8. Enjoy :))
 
-**If you can't start apache server, it is because your 80 port is being used by another program. Following these stemp to fix it:**
+**If you can't start apache server, it is because your 80 port is being used by another program. Following these steps to fix it:**
  1. Open XAMPP Control panel
  2. Config > Service and Port Settings
  3. Change "Main port" value to 81
