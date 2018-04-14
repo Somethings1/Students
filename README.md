@@ -1,8 +1,8 @@
----Students manage app by php.
+#Students manage app by php.
 
-Features: Login, logout, see list of members,...(incoming in future: modify list with admin account)
+###Features: Login, logout, see list of members,...(incoming in future: modify list with admin account)
 
-How to use? Follow these step:
+##How to use:
  1. Download and install XAMPP, download and extract this project from github 
  2. Copy (or cut) the project folder into C:\xampp\htdocs (or in the drive that you installed XAMPP in)
  3. Open XAMPP Control panel, start the Apache server and MySQL
@@ -12,7 +12,7 @@ How to use? Follow these step:
  7. Type in the url bar: http://localhost/Students
  8. Enjoy :))
 
-*If you can't start apache server, it is because your 80 port is being used by another program. Following these stemp to fix it:
+**If you can't start apache server, it is because your 80 port is being used by another program. Following these stemp to fix it:**
  1. Open XAMPP Control panel
  2. Config > Service and Port Settings
  3. Change "Main port" value to 81
