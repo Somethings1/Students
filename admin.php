@@ -1,5 +1,6 @@
 <?php
-    include "functions.php";
+    include "Functions/functions.php";
+    checkLogin();
     checkAccess();
 ?>
 <html>
@@ -16,6 +17,7 @@
                 color: white;
             }
             .container {
+                box-sizing: border-box;
                 display: flex;
                 justify-content: center;
                 align-items: center;  
@@ -24,7 +26,7 @@
                 background: -webkit-linear-gradient(to left, #f83600, #fe8c00);
                 background: linear-gradient(to left, #f83600, #fe8c00);      
                 width: 100%;
-                height: 100%;
+                min-height: 100%;
             }
             .btn {
                 background: transparent;
@@ -114,6 +116,9 @@
                     margin: 10px 20px;
                     width: 75px;
                 }
+                ::-webkit-scrollbar {
+                    display: none;
+                }
             }
         </style>
     </head>
@@ -132,7 +137,7 @@
             }
             else if ($_GET['choice'] === 'add') {
         ?>
-            <form action="addStudent.php" method="post" class="form">
+            <form action="Features/addStudent.php" method="post" class="form">
                 <h1>Add a student</h1>
                 <div class="form-control">
                     <label for="name">Full name</label>
@@ -159,12 +164,12 @@
             }
             else if ($_GET['choice'] === 'modify') {
         ?>
-            <form action="modifyStudent.php" method="post" class="form">
+            <form action="Features/modifyStudent.php" method="post" class="form">
                 <h1>Modify informations of a student</h1>
                 <p>*Leave blank to keep old information</p>
                 <div class="form-control">
                     <label for="name">Id</label>
-                    <input type="text" name="name" placeholder="Id of student to change">
+                    <input type="text" name="id" placeholder="Id of student to change">
                 </div>
                 <div class="form-control">
                     <label for="name">Full name</label>
@@ -191,7 +196,7 @@
             }
             else if ($_GET['choice'] === 'delete') {
         ?>
-            <form action="deleteStudent.php" method="post" class="form">
+            <form action="Features/deleteStudent.php" method="post" class="form">
                 <h1>Remove a student from list</h1>
                 <div class="form-control">
                     <label for="name">Id</label>

@@ -1,45 +1,44 @@
 <?php
-            if (isset($_GET['filled'])) {
-                $username = isset($_POST['username']) ? $_POST['username'] : null;
-                $password = isset($_POST['pass']) ? $_POST['pass'] : null;
-                $rePassword = isset($_POST['rePass']) ? $_POST['rePass'] : null;
-                $email = isset($_POST['email']) ? $_POST['email'] : null;
-                $name = isset($_POST['name']) ? $_POST['name'] : "";
-                $nickname = isset($_POST['nickname']) ? $_POST['nickname'] : null;
-                if (!$username || !$password || !$rePassword || !$email || !$nickname) {
-                    echo "<script>alert('Please fill all the required input.')</script>";
+    if (isset($_GET['filled'])) {
+        $username = isset($_POST['username']) ? $_POST['username'] : null;
+        $password = isset($_POST['pass']) ? $_POST['pass'] : null;
+        $rePassword = isset($_POST['rePass']) ? $_POST['rePass'] : null;
+        $email = isset($_POST['email']) ? $_POST['email'] : null;
+        $name = isset($_POST['name']) ? $_POST['name'] : "";
+        $nickname = isset($_POST['nickname']) ? $_POST['nickname'] : null;
+        if (!$username || !$password || !$rePassword || !$email || !$nickname) {
+            echo "<script>alert('Please fill all the required input.')</script>";
+        }
+        else {
+            include("functions.php");
+            if (strcmp($password, $rePassword) != 0) {
+                echo "<script>alert('Password and re-entered are not the same.')</script>";
+            }
+            else if (strlen($password) < 8){
+                echo "<script>alert('Your password must be at least 8 charaters.')</script>";
+            }
+            else if (!isTheUsernameIsTheOnly($username)) {
+                echo "<script>alert('Username is contained in database, please try another username.'</script>";
+            }
+            else if (!isTheEmailIsTheOnly($email)) {
+                echo "<script>alert('Email is being uses by another account, plaese try another email.')</script>";
+            }
+            else {
+                $conn = new mysqli("localhost","root", "", "Students");
+                $result = $conn->query("select * from Users");
+                $id = $result->num_rows + 1;
+                if ($conn->query("insert into Users values($id, '$nickname', '$name','$username', '$password', 'g', '$email')") === TRUE) {
+                    header("Location:success.html");
+                    die();
                 }
                 else {
-                    include("functions.php");
-                    if (strcmp($password, $rePassword) != 0) {
-                        echo "<script>alert('Password and re-entered are not the same.')</script>";
-                    }
-                    else if (strlen($password) < 8){
-                        echo "<script>alert('Your password must be at least 8 charaters.')</script>";
-                    }
-                    else if (!isTheUsernameIsTheOnly($username)) {
-                        echo "<script>alert('Username is contained in database, please try another username.')</script>";
-                    }
-                    else if (!isTheEmailIsTheOnly($email)) {
-                        echo "<script>alert('Email is being uses by another account, plaese try another email.')</script>";
-                    }
-                    else {
-                        $conn = new mysqli("localhost","root", "", "Students");
-                        $result = $conn->query("select * from Users");
-                        $id = $result->num_rows + 1;
-                        if ($conn->query("insert into Users values($id, '$nickname', '$name', '$username', '$password', 'g', '$email')") === TRUE) {
-                            header("Location:success.html");
-                            die();
-                        }
-                        else {
-                            header("Location:error.php?messerror=" . $conn->error);
-                            die();
-                        }
-                    
-                    }
-                }
+                    header("Location:../Errors/error.php?messerror=" . $conn->error);
+                    die();
+                }                    
             }
-        ?>
+        }
+    }
+?>
 <html>
     <head>
         <meta charset="utf-8">
@@ -62,6 +61,7 @@
                 display: flex;
                 justify-content: center; 
                 align-items: center;
+                flex-direction: column;
                 background: #2c3e50;
                 background: -webkit-linear-gradient(to right, #3498db, #2c3e50);
                 background: linear-gradient(to right, #3498db, #2c3e50); 
@@ -121,6 +121,31 @@
             }
             ::-ms-input-placeholder {
                     color: lightgrey;
+            }
+            @media only screen and (max-width: 700px) {
+                .container {
+                    height: 150%;
+                }
+                form {
+                    width: 100%!important;
+                }
+                h1 {
+                    font-size: 2.2rem;
+                }
+                .form label {
+                    margin-bottom: 10px;
+                    text-align: center;
+                    width: 100%;
+                }
+                .form-control {
+                    margin: 10px 0;
+                }
+                button {
+                    margin: 10px 20px;
+                }
+                ::-webkit-scrollbar {
+                    display: none;
+                }
             }
         </style>
     </head>

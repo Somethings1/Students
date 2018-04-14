@@ -65,9 +65,10 @@
                 font-size: 2.5rem;
             }
             .mess {
-                position: fixed;
                 color: white;
-                top: 500px;
+                position: fixed;
+                text-align: center;
+                top: 550px;
                 z-index: 999;
             }
             a {
@@ -91,13 +92,18 @@
                 </form>
             </div>
             <?php
+                include "../Functions/functions.php";
                 $name = isset($_POST["username"]) ? $_POST["username"] : null;
                 $password = isset($_POST["password"]) ? $_POST["password"] : null;
                 $filled = isset($_GET["filled"]) ? $_GET["filled"] : null;
                 if (isset($_COOKIE['login']) && isset($_COOKIE['access'])) {
-                    header("Location:index.php");
+                    header("Location:../index.php");
                 }
+
+                // When user press submit
                 if ($filled != null) {
+
+                    // If user didn't press password of username
                     if ($name == null || $password == null) {
                         if ($password == null) 
                             echo "<p class='mess'>Password is required</p>";
@@ -107,7 +113,7 @@
                     else {
                         $conn = new mysqli("localhost", "root", "", "students");
                         if ($conn->connect_error) {
-                            header("Location:error.php?messerror=" . $conn->connect_error);
+                            header("Location:../Errors/error.php?messerror=" . $conn->connect_error);
                             die();
                         }
                         $conn->query("set character_set_results='utf8'"); 
@@ -116,13 +122,13 @@
                         if ($result->num_rows == 1) {
                             $row = $result->fetch_assoc();
                             if ($row['pass'] === $password) {
-                                setcookie("login", $row["id"], time() + (86400 * 30), "/");
-                                setcookie("access", $row["access"], time() + (86400 * 30), "/");
-                                setcookie("name", $row['nickname']); 
-                                header("Location:index.php");   
+                                setcookie("login", encode($row['id']), time() + (86400 * 30), "/");
+                                setcookie("access", encode($row['access']), time() + (86400 * 30), "/");
+                                setcookie("name", $row['nickname'], time() + (86400 * 30), "/"); 
+                                header("Location:../index.php");   
                             }
                             else {
-                                echo "<p class='mess'>Password is not correct. <a href='forgotPass.php'>Forgot password?</a></p>";
+                                echo "<p class='mess'>Password is not correct. <a href='forgotPass.php?filled=false'>Forgot password?</a></p>";
                             }
                         }
                         else {

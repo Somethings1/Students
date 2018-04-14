@@ -28,9 +28,6 @@ How to use? Follow these step:
 *Update 1.1:
  - Added register feature 
 
-*2.0 alpha:
- - Added admin page UI 
- - 08/04/2018: Add forgot password page. Users now can get their account back if they lost their password.
-
- *Incoming 2.0 beta:
- - Administrators can really have their own feature.
+*Update 2.0:
+ - Added administrators's features: Add, delete, and modify students's informations
+ - Added Forgot password feature, that user can use it to get their account back

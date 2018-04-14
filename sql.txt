@@ -3,14 +3,14 @@
 create database Students;
 use Students;
 create table Student(
-    id int auto increment,
+    id int primary key,
     name varchar(1),
     class varchar(5),
     info varchar(100),
     note varchar(1)    
 );
 create table Users(
-    id varchar(1),
+    id varchar(1) primary key,
     nickname varchar(1),
     realname varchar(1),
     username varchar(100),

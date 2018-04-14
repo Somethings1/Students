@@ -2,6 +2,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Forgot Password</title>
         <style>
             * {
                 padding: 0;
@@ -132,7 +133,7 @@
                         else {
                             $conn = new mysqli("localhost", "root", "", "students");
                             if ($conn -> connect_error) {
-                                header("Location:error.php?messerror=" . $conn -> connect_error);
+                                header("Location:/Errors/error.php?messerror=" . $conn -> connect_error);
                                 die();
                             }
                             if (!isset($_POST['code'])) {
