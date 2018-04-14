@@ -1,4 +1,4 @@
-Students manage app by php.
+---Students manage app by php.
 
 Features: Login, logout, see list of members,...(incoming in future: modify list with admin account)
 
@@ -21,13 +21,13 @@ How to use? Follow these step:
  6. Save the file
  7. In your web browser, instead of "http://localhost", use "http://localhost:81", or "http://127.0.0.1:81"
  8. That's it!
-*To login:
+**To login:**
  If you use all the code in sql.txt, just login with username = "admin", password = "a". You'll have the access as "Exatra admin" (that can use every feature now and in future)
 
 
-*Update 1.1:
+**Update 1.1:**
  - Added register feature 
 
-*Update 2.0:
+**Update 2.0:**
  - Added administrators's features: Add, delete, and modify students's informations
  - Added Forgot password feature, that user can use it to get their account back
