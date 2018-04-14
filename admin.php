@@ -200,7 +200,7 @@
                 <h1>Remove a student from list</h1>
                 <div class="form-control">
                     <label for="name">Id</label>
-                    <input type="text" name="name" placeholder="Id of student to remove">
+                    <input type="text" name="id" placeholder="Id of student to remove">
                 </div>
                 <div class="form-control form-control-button">
                     <button type="submit" class="btn">Submit</button>

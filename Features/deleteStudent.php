@@ -8,14 +8,14 @@
     }
 
     // Get id and check if it is null
-    $id = $_POST['id'] !== "" ? $_POST['id'] : null;
+    $id = $_POST['id'] === "" ? null : $_POST['id'];
     if (!$id) {
         echo "<script>alert('Please enter an ID to delete.');window.history.back(1);</script>";
         die();
     }
-    $sql = "delete from student where id=$id";
+    $sql = "delete from students where id=$id";
     if ($conn -> query($sql) === FALSE) {
-        header("Location:error.php?messerror=" . $conn -> error);
+        header("Location:../Errors/error.php?messerror=" . $conn -> error);
         die();
     }
     echo "<script>alert('Informations of the student has id = $id have been deleted.');window.history.back(1)</script>";
